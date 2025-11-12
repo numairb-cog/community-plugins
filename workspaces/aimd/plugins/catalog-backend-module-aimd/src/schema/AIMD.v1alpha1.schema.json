@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "AimdV1alpha1",
+  "description": "An AIMD (AI Markdown Documentation) entity describes a markdown documentation file that can be displayed in Backstage. The AIMD can reference markdown files from various sources like GitHub, GitLab, or direct URLs.",
+  "examples": [
+    {
+      "apiVersion": "backstage.io/v1alpha1",
+      "kind": "AIMD",
+      "metadata": {
+        "name": "architecture-docs",
+        "description": "Architecture documentation for the system",
+        "labels": {
+          "doc_type": "architecture"
+        },
+        "annotations": {
+          "backstage.io/view-url": "https://github.com/example/repo/blob/main/docs/ARCHITECTURE.md"
+        }
+      },
+      "spec": {
+        "type": "markdown",
+        "lifecycle": "production",
+        "owner": "platform-team",
+        "system": "core-platform",
+        "definition": "https://raw.githubusercontent.com/example/repo/main/docs/ARCHITECTURE.md"
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "$ref": "Entity"
+    },
+    {
+      "type": "object",
+      "required": ["spec"],
+      "properties": {
+        "apiVersion": {
+          "enum": ["backstage.io/v1alpha1", "backstage.io/v1beta1"]
+        },
+        "kind": {
+          "enum": ["AIMD"]
+        },
+        "spec": {
+          "type": "object",
+          "required": ["type", "lifecycle", "owner", "definition"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "The type of the markdown documentation.",
+              "examples": ["markdown", "mdx", "asciidoc"],
+              "minLength": 1
+            },
+            "lifecycle": {
+              "type": "string",
+              "description": "The lifecycle state of the documentation.",
+              "examples": ["experimental", "production", "deprecated"],
+              "minLength": 1
+            },
+            "owner": {
+              "type": "string",
+              "description": "An entity reference to the owner of the documentation.",
+              "examples": ["platform-team", "user:john.johnson"],
+              "minLength": 1
+            },
+            "system": {
+              "type": "string",
+              "description": "An entity reference to the system that the documentation belongs to.",
+              "minLength": 1
+            },
+            "definition": {
+              "type": "string",
+              "description": "The URL or content of the markdown documentation.",
+              "minLength": 1
+            }
+          }
+        }
+      }
+    }
+  ]
+}

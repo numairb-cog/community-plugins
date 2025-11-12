@@ -1,0 +1,77 @@
+{
+  "name": "@backstage-community/plugin-aimd",
+  "version": "0.1.0",
+  "backstage": {
+    "role": "frontend-plugin",
+    "pluginId": "aimd",
+    "pluginPackages": [
+      "@backstage-community/plugin-aimd"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "homepage": "https://backstage.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/backstage/community-plugins",
+    "directory": "workspaces/aimd/plugins/aimd"
+  },
+  "license": "Apache-2.0",
+  "sideEffects": false,
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "typesVersions": {
+    "*": {
+      "package.json": [
+        "package.json"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "backstage-cli package build",
+    "clean": "backstage-cli package clean",
+    "lint": "backstage-cli package lint",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack",
+    "start": "backstage-cli package start",
+    "test": "backstage-cli package test"
+  },
+  "dependencies": {
+    "@backstage/catalog-model": "^1.7.5",
+    "@backstage/core-components": "^0.18.2",
+    "@backstage/core-plugin-api": "^1.11.1",
+    "@backstage/plugin-catalog-react": "^1.21.2",
+    "@material-ui/core": "^4.12.2",
+    "@material-ui/icons": "^4.9.1",
+    "@types/react": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "highlight.js": "^11.11.1",
+    "react-markdown": "^9.0.0",
+    "rehype-highlight": "^7.0.0",
+    "remark-gfm": "^4.0.0"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.34.4",
+    "@backstage/dev-utils": "^1.1.11",
+    "@backstage/test-utils": "^1.7.3",
+    "@testing-library/dom": "^10.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^15.0.0",
+    "@types/react-dom": "^18.2.19",
+    "react": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-router-dom": "6.0.0-beta.0 || ^6.3.0"
+  }
+}
