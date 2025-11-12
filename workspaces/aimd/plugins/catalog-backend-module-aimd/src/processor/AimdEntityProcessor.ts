@@ -45,7 +45,10 @@ export class AimdEntityProcessor implements CatalogProcessor {
   }
 
   async validateEntityKind(entity: Entity): Promise<boolean> {
-    return entity.kind === 'AIMD' && aimdEntityV1alpha1Validator(entity);
+    return (
+      entity.kind === 'AIMD' &&
+      (await aimdEntityV1alpha1Validator.check(entity))
+    );
   }
 
   async postProcessEntity(

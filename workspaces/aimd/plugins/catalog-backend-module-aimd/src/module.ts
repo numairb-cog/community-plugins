@@ -20,9 +20,11 @@ import {
 } from '@backstage/backend-plugin-api';
 import { catalogProcessingExtensionPoint } from '@backstage/plugin-catalog-node/alpha';
 import { AimdEntityProcessor } from './processor/AimdEntityProcessor';
+import { ComponentAimdProcessor } from './processor/ComponentAimdProcessor';
 
 /**
- * A backend module that registers the AIMD entity kind with the catalog.
+ * A backend module that registers the AIMD entity kind with the catalog
+ * and enables consumesAimd/aimdConsumedBy relations.
  *
  * @public
  */
@@ -38,6 +40,10 @@ export const catalogModuleAimd = createBackendModule({
       async init({ catalog, logger }) {
         logger.info('Registering AIMD entity processor');
         catalog.addProcessor(new AimdEntityProcessor());
+        logger.info(
+          'Registering Component AIMD processor for consumesAimd relations',
+        );
+        catalog.addProcessor(new ComponentAimdProcessor());
       },
     });
   },

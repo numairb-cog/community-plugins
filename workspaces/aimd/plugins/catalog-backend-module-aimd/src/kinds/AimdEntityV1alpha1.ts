@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import type { Entity } from '@backstage/catalog-model';
+import type { Entity, KindValidator } from '@backstage/catalog-model';
+import { entityKindSchemaValidator } from '@backstage/catalog-model';
 import schema from '../schema/AIMD.v1alpha1.schema.json';
-import { ajvCompiledJsonSchemaValidator } from '@backstage/plugin-catalog-node';
 
 /**
  * Backstage AIMD entity.
@@ -40,5 +40,9 @@ export interface AimdEntityV1alpha1 extends Entity {
  *
  * @public
  */
-export const aimdEntityV1alpha1Validator =
-  ajvCompiledJsonSchemaValidator(schema);
+const validator = entityKindSchemaValidator(schema);
+export const aimdEntityV1alpha1Validator: KindValidator = {
+  async check(data: unknown) {
+    return validator(data) === data;
+  },
+};

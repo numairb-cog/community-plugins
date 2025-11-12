@@ -14,12 +14,16 @@
  * limitations under the License.
  */
 
-export { catalogModuleAimd } from './module';
-export { AimdEntityProcessor } from './processor/AimdEntityProcessor';
-export {
-  ComponentAimdProcessor,
-  ANNOTATION_AIMD_CONSUMES,
-} from './processor/ComponentAimdProcessor';
-export type { AimdEntityV1alpha1 } from './kinds/AimdEntityV1alpha1';
-export { aimdEntityV1alpha1Validator } from './kinds/AimdEntityV1alpha1';
-export { RELATION_CONSUMES_AIMD, RELATION_AIMD_CONSUMED_BY } from './relations';
+/**
+ * Relation type indicating that a component consumes AIMD documentation.
+ *
+ * @public
+ */
+export const RELATION_CONSUMES_AIMD = 'consumesAimd';
+
+/**
+ * Relation type indicating that AIMD documentation is consumed by a component.
+ *
+ * @public
+ */
+export const RELATION_AIMD_CONSUMED_BY = 'aimdConsumedBy';
