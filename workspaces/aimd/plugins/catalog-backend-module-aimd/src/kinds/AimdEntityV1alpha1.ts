@@ -43,6 +43,10 @@ export interface AimdEntityV1alpha1 extends Entity {
 const validator = entityKindSchemaValidator(schema);
 export const aimdEntityV1alpha1Validator: KindValidator = {
   async check(data: unknown) {
-    return validator(data) === data;
+    try {
+      return validator(data) === data;
+    } catch {
+      return false;
+    }
   },
 };
