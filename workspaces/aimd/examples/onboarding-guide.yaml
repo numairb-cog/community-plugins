@@ -1,0 +1,59 @@
+apiVersion: backstage.io/v1alpha1
+kind: Aimd
+metadata:
+  name: onboarding-guide
+  description: New employee onboarding documentation
+  annotations:
+    backstage.io/managed-by-location: file:./onboarding-guide.yaml
+spec:
+  type: markdown
+  lifecycle: production
+  owner: hr-team
+  system: docs-portal
+  definition: |
+
+    This guide will help you get started with everything you need to know as a new team member.
+
+
+    - [ ] Complete HR paperwork
+    - [ ] Set up your workstation
+    - [ ] Get access to company systems
+    - [ ] Meet your team
+    - [ ] Review company policies
+
+
+
+    You'll need access to the following systems:
+
+    1. **Email** - Your company email account
+    2. **Slack** - Our primary communication tool
+    3. **GitHub** - For code repositories
+    4. **Backstage** - Our developer portal (you're here!)
+
+
+    Follow these steps to set up your development environment:
+
+    ```bash
+    git clone https://github.com/company/main-repo.git
+    
+    cd main-repo
+    npm install
+    
+    npm run dev
+    ```
+
+
+    We value:
+
+    - **Collaboration** - Work together and help each other
+    - **Innovation** - Try new things and learn from failures
+    - **Quality** - Take pride in your work
+    - **Work-Life Balance** - Take care of yourself
+
+
+    - [Employee Handbook](https://example.com/handbook)
+    - [Engineering Wiki](https://example.com/wiki)
+    - [Support Slack Channel](https://example.slack.com/channels/support)
+
+
+    Don't hesitate to reach out to your manager or the HR team if you have any questions!

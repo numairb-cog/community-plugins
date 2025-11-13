@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "AimdV1alpha1",
+  "description": "An Aimd describes a markdown documentation entity",
+  "examples": [
+    {
+      "apiVersion": "backstage.io/v1alpha1",
+      "kind": "Aimd",
+      "metadata": {
+        "name": "my-documentation",
+        "description": "Important documentation"
+      },
+      "spec": {
+        "type": "markdown",
+        "lifecycle": "production",
+        "owner": "documentation-team",
+        "definition": {
+          "$text": "./documentation.md"
+        }
+      }
+    }
+  ],
+  "allOf": [
+    {
+      "$ref": "Entity"
+    },
+    {
+      "type": "object",
+      "required": ["spec"],
+      "properties": {
+        "apiVersion": {
+          "enum": ["backstage.io/v1alpha1", "backstage.io/v1beta1"]
+        },
+        "kind": {
+          "enum": ["Aimd"]
+        },
+        "spec": {
+          "type": "object",
+          "required": ["type", "lifecycle", "owner", "definition"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "The type of the documentation",
+              "minLength": 1
+            },
+            "lifecycle": {
+              "type": "string",
+              "description": "The lifecycle state of the documentation",
+              "minLength": 1
+            },
+            "owner": {
+              "type": "string",
+              "description": "An entity reference to the owner of the documentation",
+              "minLength": 1
+            },
+            "definition": {
+              "description": "The markdown content or reference to markdown file",
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object"
+                }
+              ]
+            },
+            "system": {
+              "type": "string",
+              "description": "An entity reference to the system that the documentation belongs to"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
