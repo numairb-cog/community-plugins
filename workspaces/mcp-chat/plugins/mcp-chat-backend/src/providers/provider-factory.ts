@@ -146,8 +146,8 @@ export function getProviderConfig(config: RootConfigService): ProviderConfig {
   }
 
   // Validate required fields
-  // Ollama, LiteLLM, and OpenAI Responses can work without API keys depending on configuration
-  const noApiKeyRequired = ['ollama', 'litellm', 'openai-responses'];
+  // Ollama, LiteLLM, OpenAI Responses, and N8N can work without API keys depending on configuration
+  const noApiKeyRequired = ['ollama', 'litellm', 'openai-responses', 'n8n'];
   if (!noApiKeyRequired.includes(providerId) && !configTemplate.apiKey) {
     throw new Error(`API key is required for provider: ${providerId}`);
   }
