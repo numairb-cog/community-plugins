@@ -21,6 +21,7 @@ import { ClaudeProvider } from './claude-provider';
 import { GeminiProvider } from './gemini-provider';
 import { OllamaProvider } from './ollama-provider';
 import { LiteLLMProvider } from './litellm-provider';
+import { N8NProvider } from './n8n-provider';
 import { RootConfigService } from '@backstage/backend-plugin-api';
 
 export class ProviderFactory {
@@ -44,6 +45,9 @@ export class ProviderFactory {
       case 'litellm':
         return new LiteLLMProvider(config);
 
+      case 'n8n':
+        return new N8NProvider(config);
+
       default:
         throw new Error(`Unsupported provider: ${config.type}`);
     }
@@ -66,6 +70,7 @@ export function getProviderConfig(config: RootConfigService): ProviderConfig {
     'gemini',
     'ollama',
     'litellm',
+    'n8n',
   ];
   if (!allowedProviders.includes(providerId)) {
     throw new Error(
@@ -120,6 +125,18 @@ export function getProviderConfig(config: RootConfigService): ProviderConfig {
       baseUrl:
         providerConfig.getOptionalString('baseUrl') || 'http://localhost:4000',
       model: model,
+    },
+
+    n8n: {
+      type: 'n8n',
+      apiKey: token,
+      baseUrl:
+        providerConfig.getOptionalString('baseUrl') ||
+        'http://dss-ubuntu-1.cec.delllabs.net:5678/webhook/fast-podqa-withjiraInfo',
+      model: model,
+      inputField: providerConfig.getOptionalString('inputField') || 'chatInput',
+      responseField:
+        providerConfig.getOptionalString('responseField') || 'output',
     },
   };
 
