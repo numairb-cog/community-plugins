@@ -48,6 +48,10 @@ mcpChat:
       baseUrl: 'http://localhost:4000'
       token: ${LITELLM_API_KEY}
       model: gpt-4o-mini
+    - id: n8n
+      baseUrl: 'http://localhost:5678/webhook/backstage-chat'
+      token: ${N8N_BEARER_TOKEN}
+      model: 'n8n-chatgpt'
   mcpServers:
     - id: brave-search-server
       name: Brave Search Server
