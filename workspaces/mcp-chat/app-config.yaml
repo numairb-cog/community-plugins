@@ -27,27 +27,9 @@ integrations:
 # --------- MCP Chat Configuration ---------
 mcpChat:
   providers:
-    - id: openai
-      baseUrl: 'https://any-openai-compatible-url/v1'
-      token: ${OPENAI_API_KEY}
-      model: gpt-4o-mini
-    - id: openai-responses # OpenAI Responses API
-      baseUrl: 'http://your-responses-api-endpoint.com/v1/openai/v1'
-      model: 'gemini/models/gemini-2.5-flash'
-      token: ${API_TOKEN} # Optional
-    - id: gemini
-      token: ${GEMINI_API_KEY}
-      model: gemini-2.5-flash
-    - id: claude
-      token: ${CLAUDE_API_KEY}
-      model: claude-sonnet-4-20250514
-    - id: ollama
-      baseUrl: 'http://localhost:11434'
-      model: llama3.1:8b
-    - id: litellm
-      baseUrl: 'http://localhost:4000'
-      token: ${LITELLM_API_KEY}
-      model: gpt-4o-mini
+    - id: n8n
+      baseUrl: 'http://localhost:5678/webhook/backstage-chat'
+      model: 'n8n-chatgpt'
   mcpServers:
     - id: brave-search-server
       name: Brave Search Server
